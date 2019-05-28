@@ -1,0 +1,28 @@
+<mat-card class="bottom-spacing">
+    <mat-card *ngIf="loginError" class="error-card">Login Failed! Please try again.</mat-card>
+    <mat-card *ngIf="netWorkError" class="error-card">Network error! Please try again.</mat-card>
+    <mat-tab-group>
+        <mat-tab label="User Login">
+            <form class="gutter form" [formGroup]="userLoginForm">
+                <mat-form-field class="full-width-field" >
+                    <input matInput placeholder="Email" formControlName="email">
+                </mat-form-field>
+                <mat-form-field class="full-width-field">
+                    <input matInput placeholder="Password" formControlName="password" type="password">
+                </mat-form-field>
+                <button mat-raised-button color="primary" (click)="customerLogin()">Login</button>
+            </form>
+        </mat-tab>
+        <mat-tab label="Store Login">
+            <form class="gutter form" [formGroup]="storeLoginForm">
+            <mat-form-field class="full-width-field" >
+                <input matInput placeholder="Store Id" formControlName="userId">
+            </mat-form-field>
+            <mat-form-field class="full-width-field">
+                <input matInput placeholder="Password" formControlName="password" type="password">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="storeLogin()">Login</button>
+        </form>
+        </mat-tab>
+    </mat-tab-group>
+</mat-card>

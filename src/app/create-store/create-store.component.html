@@ -1,0 +1,84 @@
+<mat-card class="bottom-spacing">
+  <h1 class="mat-display-1">Create Store</h1>
+    <mat-vertical-stepper [linear]="true" #stepper>
+        <mat-step [stepControl]="storeDetailsForm">
+            <form [formGroup]="storeDetailsForm" class="form">
+                <ng-template matStepLabel>Fill out your store details</ng-template>
+                <mat-form-field class="full-width-field">
+                    <input matInput  placeholder="Store Name" formControlName="storeName">
+                </mat-form-field>
+                <mat-form-field class="full-width-field">
+                    <mat-label>Region</mat-label>
+                    <mat-select formControlName="region">
+                        <mat-option [value]="region.id" *ngFor="let region of regions">{{region.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="full-width-field">
+                    <mat-label>Cuisine</mat-label>
+                    <mat-select formControlName="cuisine">
+                        <mat-option [value]="cuisine.id" *ngFor="let cuisine of cuisines">{{cuisine.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="full-width-field">
+                    <input matInput placeholder="Available Serving" type="number" formControlName="maxServings">
+                </mat-form-field>
+                <section class="form-spacing">
+                    <mat-slide-toggle color="primary" (change)="setDelivery($event)">Home Delivery</mat-slide-toggle>
+                </section>
+                <mat-form-field class="full-width-field">
+                    <input matInput [matDatepicker]="startDate" placeholder="Start date" formControlName="startDate">
+                    <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+                    <mat-datepicker #startDate></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="full-width-field">
+                    <input matInput [matDatepicker]="endDate" placeholder="End date" formControlName="endDate">
+                    <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                    <mat-datepicker #endDate></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="full-width-field">
+                    <input matInput  placeholder="Min Order value in euros" formControlName="orderEligibility" type="number">
+                </mat-form-field>
+                <div>
+                    <button mat-raised-button matStepperNext color="primary">Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="contactDetailsForm" >
+            <form [formGroup]="contactDetailsForm" class="form">
+                <ng-template matStepLabel>Fill out your address</ng-template>
+                <mat-form-field class="full-width-field">
+                    <input matInput  placeholder="Contact Name" formControlName="name">
+                </mat-form-field>
+                <mat-radio-group aria-label="Select an option" class="top-spacing bottom-spacing box" (change)="setGender($event)">
+                    <mat-radio-button [value]="gender.id" *ngFor="let gender of genders" class="right-spacing" color="primary">{{gender.gender}}</mat-radio-button>
+                </mat-radio-group>
+                <mat-form-field class="full-width-field">
+                    <input matInput  placeholder="Contact Email" formControlName="contactEmail" type="email">
+                </mat-form-field>
+                <mat-form-field class="full-width-field">
+                    <input matInput  placeholder="Contact Number" formControlName="contactNumber">
+                </mat-form-field>
+                <mat-form-field class="full-width-field">
+                    <textarea matInput placeholder="Address" formControlName="address"></textarea>
+                </mat-form-field>
+                <div>
+                    <button mat-raised-button matStepperPrevious color="primary" class="right-spacing">Back</button>
+                    <button mat-raised-button color="primary" (click)="login(stepper)">Login</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            {{msg}}
+            <div>
+                <button mat-raised-button color="primary" class="top-spacing" routerLink="/login">Go to store</button>
+            </div>
+        </mat-step>
+    </mat-vertical-stepper>
+<!--<form class="form">
+
+
+
+  <button color="primary" mat-raised-button>Create Store</button>
+</form>-->
+</mat-card>

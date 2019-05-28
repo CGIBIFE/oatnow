@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+@import "~bootstrap/scss/bootstrap";
+html, body { height: 100%; background: #303030 }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+.container {
+  max-width: 980px;
+  margin: auto;
+  padding: 1em;
+}
+  .form{
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  .full-width-field {
+    width: 100%;
+  }
+  .primary-button {
+    background: #c2185b;
+  }
+  .bottom-spacing {
+    margin-bottom: 1em;
+  }
+  .right-spacing{
+    margin-right: 1em;
+  }
+  .top-spacing{
+    margin-top: 1em;
+  }
+  .form-spacing {
+    margin: 20px 0;
+  }
+  .box {
+    display: block;
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  .gutter{
+    padding: 1em;
+  }
+  .error-card {
+    background: #d43434;
+  }
+  .success-card{
+    background: forestgreen;
+  }
+}
