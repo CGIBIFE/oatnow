@@ -34,6 +34,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
   .box {
     display: block;
   }
+  .flex-box {
+    display: flex;
+  }
   .cursor-pointer {
     cursor: pointer;
   }
@@ -45,5 +48,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
   }
   .success-card{
     background: forestgreen;
+  }
+  .primary-menu {
+    background: #c2185b;
+    height: 50px;
+    padding: 15px;
+  }
+  .menu-container{
+    max-width: 980px;
+    margin: auto;
   }
 }

@@ -5,23 +5,23 @@
         <mat-tab label="User Login">
             <form class="gutter form" [formGroup]="userLoginForm">
                 <mat-form-field class="full-width-field" >
-                    <input matInput placeholder="Email" formControlName="email">
+                    <input matInput placeholder="Email" formControlName="email" required>
                 </mat-form-field>
                 <mat-form-field class="full-width-field">
-                    <input matInput placeholder="Password" formControlName="password" type="password">
+                    <input matInput placeholder="Password" formControlName="password" type="password" required>
                 </mat-form-field>
-                <button mat-raised-button color="primary" (click)="customerLogin()">Login</button>
+                <button mat-raised-button color="primary" (click)="customerLogin()" [disabled]="!userLoginForm.valid">Login</button>
             </form>
         </mat-tab>
         <mat-tab label="Store Login">
             <form class="gutter form" [formGroup]="storeLoginForm">
             <mat-form-field class="full-width-field" >
-                <input matInput placeholder="Store Id" formControlName="userId">
+                <input matInput placeholder="Store Id" formControlName="userId" required>
             </mat-form-field>
             <mat-form-field class="full-width-field">
-                <input matInput placeholder="Password" formControlName="password" type="password">
+                <input matInput placeholder="Password" formControlName="password" type="password" required>
             </mat-form-field>
-            <button mat-raised-button color="primary" (click)="storeLogin()">Login</button>
+            <button mat-raised-button color="primary" (click)="storeLogin()" [disabled]="!storeLoginForm.valid">Login</button>
         </form>
         </mat-tab>
     </mat-tab-group>

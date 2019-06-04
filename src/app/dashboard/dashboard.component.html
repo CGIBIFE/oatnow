@@ -1,18 +1,20 @@
 <mat-card>
   <h1>Dashboard</h1>
   <mat-card *ngIf="msg" class="success-card">{{msg}}</mat-card>
-  <button mat-raised-button color="primary" class="top-spacing" (click)="showAddForm()" *ngIf="!showForm">Add Menu</button>
+  <button mat-raised-button color="primary" class="top-spacing bottom-spacing" (click)="showAddForm('add')" *ngIf="!showForm">Add Menu</button>
   <form class="gutter form" *ngIf="showForm" [formGroup]="addProductForm">
     <mat-form-field class="full-width-field" >
-      <input matInput placeholder="Name" formControlName="name">
+      <input matInput placeholder="Name" formControlName="name" required>
     </mat-form-field>
     <mat-form-field class="full-width-field" >
-      <input matInput placeholder="Price" formControlName="price">
+      <input matInput placeholder="Price" formControlName="price" required>
     </mat-form-field>
     <mat-form-field class="full-width-field" >
-      <input matInput placeholder="Qty" formControlName="qty">
+      <input matInput placeholder="Qty" formControlName="qty" required>
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="addProduct()">Add Menu</button>
+    <button mat-raised-button color="primary" (click)="addProduct()" type="submit" [disabled]="!addProductForm.valid" *ngIf="formState === 'add'" class="right-spacing">Add Menu</button>
+    <button mat-raised-button color="primary" (click)="editProduct()" type="submit" [disabled]="!addProductForm.valid" *ngIf="formState === 'edit'" class="right-spacing">Edit Menu</button>
+    <button mat-raised-button color="primary" type="submit" (click)="hideForm()">Cancel</button>
   </form>
   <table class="table table-dark table-bordered">
     <thead class="thead-light">
@@ -20,6 +22,7 @@
     <th>Name</th>
     <th>Price</th>
     <th>Available Qty</th>
+    <th>Manage</th>
     </tr>
     </thead>
     <tbody>
@@ -27,7 +30,26 @@
       <td>{{product.name}}</td>
       <td>{{product.price}}</td>
       <td>{{product.qty}}</td>
+      <td><a herf="#" class="btn btn-secondary right-spacing cursor-pointer" (click)="showAddForm('edit');updateProduct(product)">Edit</a> <a herf="#" class="btn btn-secondary cursor-pointer" (click)="deleteProduct(product)"> Delete</a></td>
     </tr>
     </tbody>
   </table>
+
+    <h3 class="top-spacing">Orders</h3>
+    <table class="table table-dark table-bordered">
+        <thead class="thead-light">
+        <tr>
+            <th>Order Id</th>
+            <th>Order Amount</th>
+            <th>Manage</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let order of orders">
+            <td>{{order.order_id}}</td>
+            <td>{{order.total}}</td>
+            <td><a herf="#" class="btn btn-secondary right-spacing cursor-pointer" (click)="viewOrder(order);">View</a></td>
+        </tr>
+        </tbody>
+    </table>
 </mat-card>

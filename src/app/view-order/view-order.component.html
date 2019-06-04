@@ -1,0 +1,40 @@
+<mat-card>
+  <h3>Order # :</h3>
+  <p  class="bottom-spacing">{{id}}</p>
+  <h3>Ordered by :</h3>
+  <span *ngFor="let detail of customer" class="bottom-spacing flex-box">
+  <p>{{detail.name}}, <br>
+  {{detail.address}}, <br>
+  {{detail.phone}}, <br>
+  {{detail.email}}</p>
+    </span>
+
+  <h3>Ordered Items :</h3>
+  <table class="table table-dark table-bordered bottom-spacing">
+    <thead class="thead-light">
+    <tr>
+      <th>S.No</th>
+      <th>Name</th>
+      <th> Qty</th>
+      <th> Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of items;index as i">
+      <td>{{i}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.quantity}}</td>
+      <td>{{item.cost}}</td>
+    </tr>
+    <tr>
+      <td colspan="3">Total</td>
+      <td style="background-color: cadetblue;"><b>{{this.total}}</b></td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="top-spacing" *ngIf="!orderStatus">
+    <p>You have received a order request</p>
+  <button class="btn btn-success right-spacing" (click)="updateOrderStatus(true)">Accept</button>
+  <button class="btn btn-danger" (click)="updateOrderStatus(false)">Decline</button>
+  </div>
+</mat-card>

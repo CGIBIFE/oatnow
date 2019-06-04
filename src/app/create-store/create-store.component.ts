@@ -26,10 +26,10 @@ export class CreateStoreComponent implements OnInit {
       storeName: ['', Validators.required],
       region: ['', Validators.required],
       cuisine: ['', Validators.required],
-      maxServings: ['', Validators.required],
+      maxServings: ['', Validators.required, Validators.pattern("^[0-9]*$")],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
-      orderEligibility: ['', Validators.required],
+      orderEligibility: ['', Validators.required, Validators.pattern("^[0-9]*$")],
     });
     this.contactDetailsForm = this._formBuilder.group({
       name: ['', Validators.required],

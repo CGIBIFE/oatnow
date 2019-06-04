@@ -11,13 +11,14 @@ import {
     MatInputModule,
     MatSelectModule,
     MatSlideToggleModule,
-    MatNativeDateModule, MatStepperModule, MatRadioModule, MatTabsModule, MatTableModule
+    MatNativeDateModule, MatStepperModule, MatRadioModule, MatTabsModule, MatTableModule, MatMenuModule
 } from "@angular/material";
 import { CreateStoreComponent } from './create-store/create-store.component';
 import { HomeComponent } from './home/home.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ViewOrderComponent } from './view-order/view-order.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CreateStoreComponent,
     HomeComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    ViewOrderComponent
   ],
     imports: [
         BrowserModule,
@@ -45,7 +47,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         ReactiveFormsModule,
         MatRadioModule,
         MatTabsModule,
-        MatTableModule
+        MatTableModule,
+        MatMenuModule
     ],
   providers: [],
   bootstrap: [AppComponent]
